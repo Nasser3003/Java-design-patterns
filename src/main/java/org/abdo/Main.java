@@ -1,42 +1,25 @@
 package org.abdo;
 
 
-import org.abdo.command.*;
+import org.abdo.decorator.*;
 
 public class Main {
     public static void main(String[] args) {
 
+        Drink coffeeDrink = new CoffeeDrink();
+        Drink coffeeSugar1 = new RealSugar(coffeeDrink);
+        Drink coffeeSugar2 = new RealSugar(coffeeSugar1);
+        Drink coffeeCowMilk = new RealMilk(coffeeSugar2);
 
-        var videoEditor = new VideoEditor();
-        var history = new CommandHistory();
-        var undo = new UndoCommand(history);
+        Drink teaDrink = new TeaDrink();
+        Drink teaSugar1 = new RealSugar(teaDrink);
+        Drink teaCowMilk = new RealMilk(teaSugar1);
 
-        var setTextsCommand = new SetTextCommand("first", videoEditor, history);
-        setTextsCommand.execute();
+        System.out.println(coffeeCowMilk.description());
+        System.out.println(coffeeCowMilk.cost());
 
-        var setContrastCommand = new SetContrastCommand(2.0, videoEditor, history);
-        setContrastCommand.execute();
-
-        var setTextsCommand1 = new SetTextCommand("third", videoEditor, history);
-        setTextsCommand1.execute();
-
-        var setContrastCommand1 = new SetContrastCommand(4.0, videoEditor, history);
-        setContrastCommand1.execute();
-
-
-        System.out.println(videoEditor);
-
-        undo.execute();
-        System.out.println("1st: " + videoEditor);
-
-        undo.execute();
-        System.out.println("2nd: " + videoEditor);
-
-        undo.execute();
-        System.out.println("3rd: " + videoEditor);
-
-        undo.execute();
-        System.out.println("4th: " + videoEditor);
+        System.out.println(teaCowMilk.description());
+        System.out.println(teaCowMilk.cost());
 
     }
 }
