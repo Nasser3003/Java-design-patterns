@@ -1,6 +1,6 @@
 package org.abdo.decorator;
 
-public class TeaDrink extends Drink {
+public class TeaBeverage extends Beverage {
     @Override
     public float cost() {
         return 3;

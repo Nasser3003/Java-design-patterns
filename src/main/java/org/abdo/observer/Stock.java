@@ -1,28 +1,21 @@
 package org.abdo.observer;
 
-public class Stock extends Subject {
+public class Stock extends Observable {
     private String symbol;
-    private float price;
-
-    public Stock(String symbol, float price) {
+    private int price;
+    public Stock(String symbol, int price) {
         this.symbol = symbol;
         this.price = price;
     }
 
-    public float getPrice() {
+    public String getSymbol() {
+        return symbol;
+    }
+    public int getPrice() {
         return price;
     }
-
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
         notifyObservers();
-    }
-
-    @Override
-    public String toString() {
-        return "Stock{" +
-                "symbol='" + symbol + '\'' +
-                ", price=" + price +
-                '}';
     }
 }

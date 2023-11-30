@@ -1,11 +1,11 @@
 package org.abdo.decorator;
 
-public class RealSugar extends Drink {
-    private Drink drink;
+public class RealSugar extends Beverage {
+    private Beverage drink;
     private float cost = .5F;
     private String desc = ", Added Real Sugar";
 
-    public RealSugar(Drink drink) {
+    public RealSugar(Beverage drink) {
         this.drink = drink;
     }
 

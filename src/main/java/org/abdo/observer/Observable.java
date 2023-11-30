@@ -1,11 +1,10 @@
 package org.abdo.observer;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
-public abstract class Subject {
-    private final List<Observer> observers = new ArrayList<>();
-
+public abstract class Observable {
+    private Collection<Observer> observers = new ArrayList<>();
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
@@ -13,6 +12,8 @@ public abstract class Subject {
         observers.remove(observer);
     }
     public void notifyObservers() {
-        observers.forEach(Observer::update);
+        for (Observer obs : observers) {
+            obs.update();
+        }
     }
 }

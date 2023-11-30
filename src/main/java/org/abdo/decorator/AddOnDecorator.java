@@ -1,9 +1,7 @@
 package org.abdo.decorator;
 
-public abstract class Decorator extends Beverage {
+public abstract class AddOnDecorator extends Beverage {
     private Beverage beverage;
     @Override
-    public abstract float cost() {
-        beverage.cost() 
-    };
+    public abstract float cost();
 }
