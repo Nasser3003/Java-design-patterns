@@ -21,12 +21,4 @@ public class SetContrastCommand extends AbstractUndoableCommand {
         videoEditor.setContrast(prevContrast);
     }
 
-    // for troubleshooting
-    @Override
-    public String toString() {
-        return "SetContrastCommand{" +
-                "prevContrast=" + prevContrast +
-                ", contrast=" + contrast +
-                '}';
-    }
 }

@@ -21,12 +21,4 @@ public class SetTextCommand extends AbstractUndoableCommand {
         videoEditor.setText(prevText);
     }
 
-    // for troubleshooting
-    @Override
-    public String toString() {
-        return "SetTextCommand{" +
-                "prevText='" + prevText + '\'' +
-                ", text='" + text + '\'' +
-                '}';
-    }
 }

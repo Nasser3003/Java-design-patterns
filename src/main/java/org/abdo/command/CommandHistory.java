@@ -17,9 +17,7 @@ CommandHistory {
         return popped;
     }
     public UndoableCommand redo() {
-        UndoableCommand reversepopped = reverseHistory.pop();
-        history.push(reversepopped);
-        return reversepopped;
+        return reverseHistory.pop();
     }
     public int historySize() {
         return history.size();
@@ -28,22 +26,4 @@ CommandHistory {
         return reverseHistory.size();
     }
 
-    // for troubleshooting
-    @Override
-    public String toString() {
-        return "CommandHistory{" +
-                "history=" + convertDequeToString(history) +
-                ", reverseHistory=" + convertDequeToString(reverseHistory) +
-                '}';
-    }
-
-    // for troubleshooting
-    public String convertDequeToString(Deque<UndoableCommand> o) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (UndoableCommand command : o) {
-            stringBuilder.append(command.toString()).append("\n");
-        }
-        return stringBuilder.toString();
-    }
 }

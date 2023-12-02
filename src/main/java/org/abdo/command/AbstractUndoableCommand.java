@@ -17,5 +17,4 @@ public abstract class AbstractUndoableCommand implements UndoableCommand {
     }
 
     protected abstract void doExecute();
-
 }
