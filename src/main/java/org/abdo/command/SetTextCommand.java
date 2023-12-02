@@ -1,27 +1,32 @@
 package org.abdo.command;
 
-public class SetTextCommand implements UndoableCommand {
-
+public class SetTextCommand extends AbstractUndoableCommand {
+    private final String prevText;
     private final String text;
-    private final VideoEditor videoEditor;
-    private CommandHistory history;
-    private String prevText;
 
     public SetTextCommand(String text, VideoEditor videoEditor, CommandHistory history) {
+        super(videoEditor, history);
+
+        this.prevText = videoEditor.getText();
         this.text = text;
-        this.videoEditor = videoEditor;
-        this.history = history;
     }
 
     @Override
-    public void execute() {
-        prevText = videoEditor.getText();
+    protected void doExecute() {
         videoEditor.setText(text);
-        history.push(this);
     }
 
     @Override
-    public void undoExecute() {
+    public void unExecute() {
         videoEditor.setText(prevText);
+    }
+
+    // for troubleshooting
+    @Override
+    public String toString() {
+        return "SetTextCommand{" +
+                "prevText='" + prevText + '\'' +
+                ", text='" + text + '\'' +
+                '}';
     }
 }

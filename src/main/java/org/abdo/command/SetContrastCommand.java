@@ -1,26 +1,32 @@
 package org.abdo.command;
 
-public class SetContrastCommand implements UndoableCommand {
-    private final double contrast;
-    private final VideoEditor videoEditor;
-    private final CommandHistory history;
-    private double prevContrast;
+public class SetContrastCommand extends AbstractUndoableCommand {
+    private final int prevContrast;
+    private final int contrast;
 
-    public SetContrastCommand(double contrast, VideoEditor videoEditor, CommandHistory history) {
-        this.videoEditor = videoEditor;
-        this.history = history;
+    public SetContrastCommand(int contrast, VideoEditor videoEditor, CommandHistory history) {
+        super(videoEditor, history);
+
+        this.prevContrast = videoEditor.getContrast();
         this.contrast = contrast;
     }
 
     @Override
-    public void execute() {
-        prevContrast = videoEditor.getContrast();
+    protected void doExecute() {
         videoEditor.setContrast(contrast);
-        history.push(this);
     }
 
     @Override
-    public void undoExecute() {
+    public void unExecute() {
         videoEditor.setContrast(prevContrast);
+    }
+
+    // for troubleshooting
+    @Override
+    public String toString() {
+        return "SetContrastCommand{" +
+                "prevContrast=" + prevContrast +
+                ", contrast=" + contrast +
+                '}';
     }
 }
