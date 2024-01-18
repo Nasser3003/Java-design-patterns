@@ -1,18 +1,17 @@
 package org.abdo;
 
 
-import org.abdo.adapter.Adaptee;
-import org.abdo.adapter.Client;
-import org.abdo.adapter.NewDataAdapter;
+import org.abdo.observer.StatusBar;
+import org.abdo.observer.Stock;
+import org.abdo.observer.StockListView;
 
 public class Main {
     public static void main(String[] args) {
 
-        var adaptee = new Adaptee();
-        var newDataAdapter = new NewDataAdapter(adaptee);
-        var client = new Client("google.com", "username", "password", newDataAdapter);
-        client.connect();
-        client.disconnect();
+        Stock tesla = new Stock("TSLA", 500);
+        StatusBar statusBar = new StatusBar(tesla);
+        StockListView stockListView = new StockListView(tesla);
+        tesla.setPrice(50);
 
     }
 }

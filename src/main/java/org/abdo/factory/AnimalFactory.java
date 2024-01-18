@@ -3,14 +3,11 @@ package org.abdo.factory;
 public class AnimalFactory implements IAnimalFactory {
     @Override
     public IAnimals create(String type) {
-        switch (type) {
-            case "Dog":
-                return new Dog();
-            case "Cat":
-                return new Cat();
-            case "Duck":
-                return new Duck();
-        }
-        return null;
+        return switch (type) {
+            case "Dog" -> new Dog();
+            case "Cat" -> new Cat();
+            case "Duck" -> new Duck();
+            default -> null;
+        };
     }
 }

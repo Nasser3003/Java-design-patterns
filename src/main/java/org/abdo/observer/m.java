@@ -12,5 +12,6 @@
 //        StatusBar statusBar = new StatusBar(tesla);
 //        StockListView stockListView = new StockListView(tesla);
 //        tesla.setPrice(50);
+//
 //    }
 //}

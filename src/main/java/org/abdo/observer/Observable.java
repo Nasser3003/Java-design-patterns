@@ -1,10 +1,10 @@
 package org.abdo.observer;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public abstract class Observable {
-    private Collection<Observer> observers = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<>();
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
